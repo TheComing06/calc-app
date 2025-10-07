@@ -1,6 +1,8 @@
+'use client'
 import { Fragment } from "react";
 
 export default function HomePage() {
+ 
   return (
     <>
       <header>
@@ -10,7 +12,7 @@ export default function HomePage() {
       </header>
       <main>
         <div>
-
+          <button >Count</button>
         </div>
       </main>
     </>
