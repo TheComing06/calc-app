@@ -2,7 +2,8 @@
 import { Fragment } from "react";
 
 export default function HomePage() {
- 
+  
+
   return (
     <>
       <header>
@@ -12,7 +13,8 @@ export default function HomePage() {
       </header>
       <main>
         <div>
-          <button >Count</button>
+          <input style={{ background: 'oklch(92.9% 0.013 255.508)' }} type="text" />
+          <button style={{}}>Count</button>
         </div>
       </main>
     </>
