@@ -1,5 +1,6 @@
 'use client'
-import { Fragment } from "react";
+
+import React, {useState} from "react";
 
 export default function HomePage() {
   
@@ -12,10 +13,11 @@ export default function HomePage() {
         </div>
       </header>
       <main>
-        <div>
-          <input style={{ background: 'oklch(92.9% 0.013 255.508)' }} type="text" />
-          <button style={{}}>Count</button>
+        <div style={{margin: '20px'}}>
+          <input className="rounded-md" style={{ background: 'oklch(92.9% 0.013 255.508)' }} type="text" />
+          <input className="rounded-md" style={{ background: 'oklch(92.9% 0.013 255.508)' }} type="text"  />
         </div>
+        <button style={{}}>Count</button>
       </main>
     </>
   );
