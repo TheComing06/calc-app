@@ -7,7 +7,16 @@ export default function HomePage() {
 
   const [inputOne, setInputOne] = useState('');
   const [inputTwo, setInputTwo] = useState('');
-  const [selectType, setSelectType] = useState('initial-value');
+  const [selectType, setSelectType] = useState<string>('');
+
+  const handeleSelectType = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const val = event.target.value;
+    setSelectType(val);
+  };
+
+  const handleBtnClick = () => {
+    alert({selectType});
+  };
 
   function Count(a:number, b:number, type:string) {
     if (type == "+") {
@@ -23,7 +32,7 @@ export default function HomePage() {
       return a/b;
     }
     else {
-      return null;
+      return Error.name;
     }
   }
 
@@ -41,7 +50,8 @@ export default function HomePage() {
         <div className="text-black flex flex-col justify-between gap-5 rounded-xl border">
           <input name="input1" value={inputOne} onChange={(event) => setInputOne(event.target.value)} placeholder="Enter first number" className="rounded-md px-3 py-2 w-60 bg-slate-200" type="number" />
           <input name="input2" value={inputTwo} onChange={(event) => setInputTwo(event.target.value)} placeholder="Enter second number" type="number" className="rounded-md px-3 py-2 bg-slate-200 w-60"  />
-          <select className="bg-slate-200 rounded-md px-3 py-2" name="select1" value={selectType} onChange={(e) => setSelectType(e.target.value)}>
+          <select className="bg-slate-200 rounded-md px-3 py-2" name="select1" value={selectType} onChange={handeleSelectType}>
+            <option value="" disabled>Choose an option</option>
             <option value="optAdd">+</option>
             <option value="optSub">-</option>
             <option value="optMul">*</option>
@@ -49,7 +59,7 @@ export default function HomePage() {
           </select>
         </div>
 
-        <button className="m-10 rounded-md py-3 px-5 hover:shadow-amber-400 hover:shadow-xl hover:bg-yellow-400 
+        <button onClick={handleBtnClick} className="m-10 rounded-md py-3 px-5 hover:shadow-amber-400 hover:shadow-xl hover:bg-yellow-400 
         hover:text-black text-2xl font-extrabold bg-yellow-600
         transition-all duration-1000">Count</button>
 
