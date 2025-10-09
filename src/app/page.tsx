@@ -7,9 +7,24 @@ export default function HomePage() {
 
   const [inputOne, setInputOne] = useState('');
   const [inputTwo, setInputTwo] = useState('');
+  const [selectType, setSelectType] = useState('initial-value');
 
-  function Count(a:number, b:number) {
-    return a+b;
+  function Count(a:number, b:number, type:string) {
+    if (type == "+") {
+      return a+b;
+    }
+    else if (type == "-") {
+      return a-b;
+    }
+    else if (type == "*") {
+      return a*b;
+    }
+    else if (type == "/") {
+      return a/b;
+    }
+    else {
+      return null;
+    }
   }
 
   return (
@@ -21,11 +36,17 @@ export default function HomePage() {
       </header>
       <main className="flex flex-col items-center justify-center min-h-200">
         
-        <output className="bg-slate-200 w-60 px-4 py-2 flex flex-col text-neutral-500 rounded-md m-5">Answer:{Count(parseInt(inputOne), parseInt(inputTwo))}</output>
+        <output className="bg-slate-200 w-60 px-4 py-2 flex flex-col text-neutral-500 rounded-md m-5">Answer:{Count(parseInt(inputOne), parseInt(inputTwo), selectType)}</output>
 
         <div className="text-black flex flex-col justify-between gap-5 rounded-xl border">
           <input name="input1" value={inputOne} onChange={(event) => setInputOne(event.target.value)} placeholder="Enter first number" className="rounded-md px-3 py-2 w-60 bg-slate-200" type="number" />
           <input name="input2" value={inputTwo} onChange={(event) => setInputTwo(event.target.value)} placeholder="Enter second number" type="number" className="rounded-md px-3 py-2 bg-slate-200 w-60"  />
+          <select className="bg-slate-200 rounded-md px-3 py-2" name="select1" value={selectType} onChange={(e) => setSelectType(e.target.value)}>
+            <option value="optAdd">+</option>
+            <option value="optSub">-</option>
+            <option value="optMul">*</option>
+            <option value="optDiv">/</option>
+          </select>
         </div>
 
         <button className="m-10 rounded-md py-3 px-5 hover:shadow-amber-400 hover:shadow-xl hover:bg-yellow-400 
